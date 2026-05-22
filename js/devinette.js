@@ -12,126 +12,162 @@
 //    - difficulte : 1 = easy, 2 = medium, 3 = hard
 //    - personnages: emoji used in the card header to set the scene
 // ─────────────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+//  DIFFICULTY GUIDE
+//
+//  difficulte = 1  →  Première / Terminale (age 17–18)
+//                     Quadratic equations, arithmetic & geometric sequences,
+//                     derivatives (tangent slope), exponential models.
+//
+//  difficulte = 2  →  Advanced Terminale / début L1
+//                     Viète's formulas, optimisation with derivatives,
+//                     geometric-sequence term count, conditional probability.
+//
+//  difficulte = 3  →  L1 / L2 university
+//                     Integration by parts, L'Hôpital's rule,
+//                     function extrema with second derivative.
+// ─────────────────────────────────────────────────────────────────────────────
 const DEVINETTES = [
+
+  // ── DIFFICULTÉ 1 — Première / Terminale ──────────────────────────────────
+
   {
     id: 1,
-    titre: "La fête d'anniversaire",
-    histoire: `Lucas organise une fête d'anniversaire. Il a invité ses amis de classe et ses amis du club de football. Il a invité exactement deux fois plus d'amis de classe que d'amis de football. En comptant les deux groupes, il y a 18 invités au total. Mais Lucas remarque aussi que ses amis de classe sont exactement 6 de plus que ses amis de football.`,
-    question: "Combien d'amis de football Lucas a-t-il invités ?",
-    reponse: "6",
-    indice: "Appelle x le nombre d'amis de football. Les amis de classe = 2x. La somme x + 2x = 18.",
-    explication: "Soit x le nombre d'amis de football.\nAmis de classe = 2x\nx + 2x = 18 → 3x = 18 → x = 6\nLucas a invité 6 amis de football (et 12 de classe).",
+    titre: "Le saut de skateboard",
+    histoire: `Axel fait du skateboard sur une rampe de compétition. Son coach modélise la hauteur de sa trajectoire (en mètres) par la fonction h(t) = −5t² + 20t, où t est le temps en secondes depuis le décollage. À t = 0, Axel quitte la rampe au niveau du sol.`,
+    question: "Après combien de secondes Axel retouche-t-il le sol ?",
+    reponse: "4",
+    indice: "Résous h(t) = 0 : factorise −5t² + 20t = −5t(t − ?) = 0.",
+    explication: "h(t) = −5t² + 20t = −5t(t − 4) = 0\nt = 0 (décollage) ou t = 4 (atterrissage).\nAxel retouche le sol après 4 secondes.\nAu sommet (t = 2) : h(2) = −20 + 40 = 20 m.",
     difficulte: 1,
-    personnages: ["🎂", "⚽"],
-    theme: "fête"
+    personnages: ["🛹", "🧑‍🎤"],
+    theme: "physique"
   },
   {
     id: 2,
-    titre: "Le marché de Marie",
-    histoire: `Marie vend des fruits au marché du village. Ce matin, elle avait 120 pommes dans sa cagette. Elle a vendu les trois quarts de ses pommes avant midi. Après la pause déjeuner, elle a vendu encore 12 pommes supplémentaires.`,
-    question: "Combien de pommes Marie a-t-il restées à la fin ?",
-    reponse: "18",
-    indice: "Trois quarts de 120 = ? Puis enlève encore 12.",
-    explication: "Marie avait 120 pommes.\nElle vend ¾ × 120 = 90 pommes le matin.\nIl en reste 120 − 90 = 30 pommes.\nElle vend encore 12 → 30 − 12 = 18 pommes restantes.",
+    titre: "L'entraînement de Léa",
+    histoire: `Léa prépare le marathon de Paris. Le lundi de sa première semaine d'entraînement, elle court 2 km. Chaque jour suivant, elle ajoute 1 km à sa distance. Elle court 7 jours de suite, du lundi au dimanche.`,
+    question: "Combien de kilomètres Léa a-t-elle courus au total sur les 7 jours ?",
+    reponse: "35",
+    indice: "Suite arithmétique de raison 1 et premier terme 2. Somme = n/2 × (u₁ + u₇).",
+    explication: "u₁ = 2 km, u₇ = 2 + 6×1 = 8 km.\nSomme = n/2 × (u₁ + uₙ) = 7/2 × (2 + 8) = 7/2 × 10 = 35 km.",
     difficulte: 1,
-    personnages: ["👩‍🌾", "🍎"],
-    theme: "commerce"
+    personnages: ["🏃‍♀️", "📅"],
+    theme: "sport"
   },
   {
     id: 3,
-    titre: "Le train d'Ahmed",
-    histoire: `Ahmed doit prendre un train qui part à 14h35. Il habite à 8 km de la gare. Il marche à 4 km/h jusqu'à l'arrêt de bus, puis prend le bus qui roule à 30 km/h. L'arrêt de bus est à 2 km de chez lui. Il faut aussi compter 5 minutes d'attente pour le bus.`,
-    question: "Combien de minutes de trajet Ahmed a-t-il en tout depuis chez lui jusqu'à la gare ?",
-    reponse: "47",
-    indice: "Temps à pied (2 km à 4 km/h) + attente 5 min + bus (6 km à 30 km/h).",
-    explication: "Temps à pied : 2 ÷ 4 = 0,5 h = 30 min\nAttente bus : 5 min\nTrajet bus : 6 ÷ 30 = 0,2 h = 12 min\nTotal : 30 + 5 + 12 = 47 min\nAhmed doit partir au plus tard 47 minutes avant 14h35, soit à 13h48.",
-    difficulte: 2,
-    personnages: ["🧑‍💼", "🚌", "🚂"],
-    theme: "transport"
+    titre: "La bactérie de Tom",
+    histoire: `Le professeur de biologie de Tom montre en TP qu'une bactérie E. coli se divise en deux toutes les heures dans des conditions idéales. À 8h00, Tom observe exactement 1 bactérie dans sa boîte de Petri.`,
+    question: "Combien de bactéries Tom observe-t-il à 13h00 ?",
+    reponse: "32",
+    indice: "Suite géométrique de premier terme 1 et de raison 2. Après 5 heures : 2⁵ = ?",
+    explication: "Après n heures : 2ⁿ bactéries.\nDe 8h à 13h → 5 heures.\n2⁵ = 32 bactéries.\nAprès 10h on aurait 2¹⁰ = 1024 — la croissance exponentielle est fulgurante !",
+    difficulte: 1,
+    personnages: ["🔬", "🧫"],
+    theme: "biologie"
   },
   {
     id: 4,
-    titre: "Le jardin de Fatima",
-    histoire: `Fatima veut clôturer son jardin rectangulaire. La longueur du jardin est le double de sa largeur. Le périmètre total est de 72 mètres. Elle a déjà acheté 50 mètres de clôture en solde.`,
-    question: "Combien de mètres de clôture supplémentaires Fatima doit-elle acheter ?",
-    reponse: "22",
-    indice: "Périmètre = 2 × (longueur + largeur). La longueur = 2 × largeur.",
-    explication: "Soit l la largeur. La longueur = 2l.\nPérimètre = 2(l + 2l) = 2 × 3l = 6l = 72\nDonc l = 12 m, longueur = 24 m.\nFatima a 50 m, il lui faut 72 − 50 = 22 m de plus.",
+    titre: "La tangente de Mia",
+    histoire: `Mia révise pour son bac de Terminale. Dans son devoir maison, elle doit trouver la pente de la droite tangente à la courbe de la fonction f(x) = x² − 4x + 1 au point d'abscisse x = 3.`,
+    question: "Quelle est la pente de la tangente à la courbe de f en x = 3 ?",
+    reponse: "2",
+    indice: "La pente de la tangente en x₀ est f′(x₀). Calcule d'abord la dérivée de f.",
+    explication: "f′(x) = 2x − 4  (règle des puissances).\nf′(3) = 2×3 − 4 = 6 − 4 = 2.\nÉquation de la tangente : y − f(3) = 2(x − 3).\nf(3) = 9 − 12 + 1 = −2, donc y = 2x − 8.",
     difficulte: 1,
-    personnages: ["👩‍🌱", "🌿"],
-    theme: "géométrie"
+    personnages: ["📐", "👩‍🎓"],
+    theme: "dérivées"
   },
+
+  // ── DIFFICULTÉ 2 — Terminale avancé / début L1 ────────────────────────────
+
   {
     id: 5,
-    titre: "Le tournoi de Thomas",
-    histoire: `Thomas organise un petit tournoi de ping-pong dans son école. Chaque joueur affronte exactement une fois chacun des autres joueurs. À la fin, il y a eu 28 matchs en tout.`,
-    question: "Combien de joueurs participaient au tournoi ?",
-    reponse: "8",
-    indice: "Le nombre de matchs dans un tournoi à n joueurs est n(n−1)/2.",
-    explication: "Le nombre de matchs = n(n−1)/2 = 28\nn(n−1) = 56\nn = 8 car 8 × 7 = 56\nIl y avait 8 joueurs.",
+    titre: "Les formules de Viète",
+    histoire: `Paul prépare le concours de Sciences Po. En cours de maths, il tombe sur l'équation 2x² − 7x + 3 = 0 et doit trouver rapidement la somme des deux solutions sans les calculer explicitement. Son professeur lui rappelle les formules de Viète.`,
+    question: "Quelle est la somme des deux solutions de 2x² − 7x + 3 = 0 ?",
+    reponse: "3.5",
+    indice: "Formule de Viète : si ax² + bx + c = 0, alors x₁ + x₂ = −b/a. Ici a = 2, b = −7.",
+    explication: "Formule de Viète : x₁ + x₂ = −b/a = −(−7)/2 = 7/2 = 3,5.\nVérification : Δ = 49 − 24 = 25. x₁ = (7+5)/4 = 3, x₂ = (7−5)/4 = 0,5.\n3 + 0,5 = 3,5 ✓",
     difficulte: 2,
-    personnages: ["🏓", "🧑‍🤝‍🧑"],
-    theme: "combinatoire"
+    personnages: ["📏", "🧑‍💻"],
+    theme: "algèbre"
   },
   {
     id: 6,
-    titre: "L'épargne de Yasmine",
-    histoire: `Yasmine économise de l'argent chaque semaine. La première semaine elle économise 2 €. Chaque semaine suivante, elle économise 3 € de plus que la semaine précédente. Après 8 semaines, elle regarde son compte.`,
-    question: "Combien d'euros Yasmine a-t-elle économisés au total après 8 semaines ?",
-    reponse: "100",
-    indice: "C'est une suite arithmétique : 2, 5, 8, 11… La somme = n/2 × (premier + dernier terme).",
-    explication: "Suite : 2, 5, 8, 11, 14, 17, 20, 23\nDernier terme = 2 + 7×3 = 23\nSomme = 8/2 × (2 + 23) = 4 × 25 = 100 €",
+    titre: "La start-up de Camille",
+    histoire: `La start-up de Camille développe une appli de maths. Son chiffre d'affaires est multiplié par 1,5 chaque trimestre. Au premier trimestre, le CA est de 50 000 €. Les investisseurs veulent savoir à partir de quel trimestre le CA dépassera 250 000 €.`,
+    question: "À partir de quel trimestre le CA dépasse-t-il 250 000 € pour la première fois ?",
+    reponse: "4",
+    indice: "50 000 × 1,5ⁿ > 250 000 → 1,5ⁿ > 5. Teste n = 3 (1,5³ = 3,375) puis n = 4.",
+    explication: "n=3 : 50 000 × 1,5³ = 50 000 × 3,375 = 168 750 < 250 000\nn=4 : 50 000 × 1,5⁴ = 50 000 × 5,0625 = 253 125 > 250 000 ✓\nDès le 4ème trimestre.",
     difficulte: 2,
-    personnages: ["👩‍💰", "💰"],
-    theme: "suites"
+    personnages: ["📈", "💼"],
+    theme: "suites géométriques"
   },
   {
     id: 7,
-    titre: "La recette de Noah",
-    histoire: `Noah fait des muffins pour toute sa classe. La recette pour 12 muffins demande : 200 g de farine, 3 œufs, 150 g de sucre, 100 ml de lait. Sa classe compte 30 élèves et il veut que chacun ait exactement 2 muffins et demi.`,
-    question: "Combien de grammes de farine Noah a-t-il besoin au total ?",
-    reponse: "1250",
-    indice: "Combien de muffins au total ? Puis calcule le ratio par rapport à 12.",
-    explication: "Nombre de muffins = 30 × 2,5 = 75 muffins.\nRatio = 75 / 12 = 6,25\nFarine = 200 × 6,25 = 1250 g",
+    titre: "La fusée de Mohamed",
+    histoire: `Mohamed fait des sciences physiques en Terminale. La position (en mètres) d'un modèle de fusée est donnée par s(t) = 30t − 5t², où t est le temps en secondes. Pour son compte-rendu, il doit trouver l'instant où la fusée atteint son altitude maximale.`,
+    question: "Après combien de secondes la fusée atteint-elle son altitude maximale ?",
+    reponse: "3",
+    indice: "À l'altitude maximale, la vitesse est nulle. La vitesse instantanée = s′(t). Résous s′(t) = 0.",
+    explication: "s′(t) = 30 − 10t.\ns′(t) = 0 → t = 3 secondes.\nAltitude maximale : s(3) = 90 − 45 = 45 m.\nAprès t = 3, la fusée redescend car s′(t) < 0.",
     difficulte: 2,
-    personnages: ["👨‍🍳", "🧁"],
-    theme: "proportions"
+    personnages: ["🚀", "👨‍🔬"],
+    theme: "physique"
   },
   {
     id: 8,
-    titre: "Le défi de Camille",
-    histoire: `Camille joue à un jeu de hasard. Elle lance deux dés à 6 faces équilibrés. Elle gagne si la somme des deux dés est strictement supérieure à 9.`,
-    question: "Combien y a-t-il de combinaisons gagnantes sur les 36 possibles ?",
-    reponse: "6",
-    indice: "Liste les paires (d1, d2) où d1 + d2 > 9 : (4,6), (5,5), (5,6), (6,4), (6,5), (6,6).",
-    explication: "Les combinaisons avec somme > 9 :\n(4,6), (6,4) → somme 10\n(5,5) → somme 10\n(5,6), (6,5) → somme 11\n(6,6) → somme 12\nTotal : 6 combinaisons sur 36.\nProbabilité = 6/36 = 1/6 ≈ 16,7%",
+    titre: "L'urne de Sophie",
+    histoire: `Sophie révise les probabilités pour son bac. Une urne contient 3 boules rouges et 2 boules bleues. On tire deux boules l'une après l'autre sans remise. Elle veut compter les façons d'obtenir deux boules de la même couleur.`,
+    question: "Combien y a-t-il de façons d'obtenir 2 boules de la même couleur (parmi les C(5,2)=10 tirages possibles) ?",
+    reponse: "4",
+    indice: "Paires de même couleur : C(3,2) paires rouges + C(2,2) paires bleues.",
+    explication: "C(5,2) = 10 tirages non ordonnés au total.\nPaires rouges : C(3,2) = 3 façons.\nPaires bleues : C(2,2) = 1 façon.\nTotal même couleur : 3 + 1 = 4 façons.\nProbabilité = 4/10 = 2/5.",
     difficulte: 2,
-    personnages: ["🎲", "🎯"],
+    personnages: ["🔴", "🔵"],
     theme: "probabilités"
   },
+
+  // ── DIFFICULTÉ 3 — L1 / L2 ────────────────────────────────────────────────
+
   {
     id: 9,
-    titre: "La bibliothèque d'Hugo",
-    histoire: `Hugo range sa bibliothèque. Il a des livres de maths, de physique et d'histoire. Les livres de physique sont deux fois plus nombreux que les livres d'histoire. Les livres de maths sont 5 de moins que la somme des livres de physique et d'histoire. En tout, il a 55 livres.`,
-    question: "Combien Hugo a-t-il de livres de maths ?",
-    reponse: "25",
-    indice: "Pose x = livres d'histoire. Physique = 2x. Maths = (x + 2x) − 5. Total = 55.",
-    explication: "Soit x = livres d'histoire.\nPhysique = 2x\nMaths = (x + 2x) − 5 = 3x − 5\nTotal : x + 2x + (3x − 5) = 55\n6x = 60 → x = 10\nHistoire = 10, Physique = 20, Maths = 3(10) − 5 = 25",
-    difficulte: 2,
-    personnages: ["📚", "🧑‍🎓"],
-    theme: "équations"
+    titre: "L'intégrale de Théo",
+    histoire: `Théo est en première année de licence de mathématiques. Son professeur demande de calculer ∫₀¹ x·eˣ dx en utilisant l'intégration par parties. Théo pose u = x et v′ = eˣ (donc u′ = 1 et v = eˣ) et applique la formule ∫ u·v′ = [u·v] − ∫ u′·v.`,
+    question: "Quelle est la valeur exacte de ∫₀¹ x·eˣ dx ?",
+    reponse: "1",
+    indice: "IPP : [x·eˣ]₀¹ − ∫₀¹ eˣ dx. Calcule chaque terme séparément.",
+    explication: "∫₀¹ x·eˣ dx = [x·eˣ]₀¹ − ∫₀¹ eˣ dx\n= (1·e − 0·e⁰) − [eˣ]₀¹\n= e − (e − 1) = 1.\nRésultat élégant : l'intégrale vaut exactement 1 !",
+    difficulte: 3,
+    personnages: ["∫", "👨‍🏫"],
+    theme: "intégration par parties"
   },
   {
     id: 10,
-    titre: "Le grand escalier",
-    histoire: `Inès monte un grand escalier. Chaque jour, elle monte 3 marches de plus que la veille. Le premier jour elle monte 1 marche. Après un certain nombre de jours, elle a monté 100 marches en tout.`,
-    question: "Après combien de jours Inès a-t-elle monté exactement 100 marches ? (La somme des n premiers termes vaut n²)",
-    reponse: "10",
-    indice: "Le nième jour elle monte 2n−1 marches. La somme des n premiers impairs = n². Trouve n tel que n² = 100.",
-    explication: "Le 1er jour : 1 marche, le 2e : 3 marches, le 3e : 5 marches…\nLe n-ième jour : 2n−1 marches (suite des impairs).\nSomme après n jours = 1+3+5+…+(2n−1) = n²\nn² = 100 → n = 10 jours.",
+    titre: "La règle de L'Hôpital",
+    histoire: `Imane est étudiante en L1. Son professeur lui demande de calculer lim(x→0) sin(3x)/x. Elle reconnaît une forme indéterminée 0/0 et se souvient de la règle de L'Hôpital : si la limite donne 0/0, on peut dériver séparément le numérateur et le dénominateur.`,
+    question: "Calculer lim(x→0) sin(3x) / x",
+    reponse: "3",
+    indice: "Applique L'Hôpital (dérive num. et dén.) ou pose u = 3x et utilise la limite fondamentale sin(u)/u → 1.",
+    explication: "Méthode 1 (L'Hôpital) : lim sin(3x)/x = lim 3cos(3x)/1 = 3·cos(0) = 3.\nMéthode 2 : sin(3x)/x = 3·[sin(3x)/(3x)] → 3·1 = 3.\nLes deux méthodes donnent 3.",
     difficulte: 3,
-    personnages: ["🧗‍♀️", "🏛️"],
-    theme: "suites"
+    personnages: ["📊", "👩‍🔬"],
+    theme: "limites"
+  },
+  {
+    id: 11,
+    titre: "L'optimisation de Nina",
+    histoire: `Nina est étudiante en L1 d'économie-mathématiques. Elle doit maximiser le profit P(x) = −2x² + 12x − 10 (en milliers d'euros), où x est la quantité produite (en milliers d'unités). Elle cherche la quantité optimale en annulant la dérivée.`,
+    question: "Pour quelle valeur de x le profit P(x) est-il maximal ?",
+    reponse: "3",
+    indice: "Calcule P′(x) et résous P′(x) = 0. Vérifie que P″(x) < 0 pour confirmer que c'est bien un maximum.",
+    explication: "P′(x) = −4x + 12.\nP′(x) = 0 → x = 3.\nP″(x) = −4 < 0 → maximum confirmé.\nP(3) = −18 + 36 − 10 = 8 (milliers d'euros de profit maximal).",
+    difficulte: 3,
+    personnages: ["💹", "👩‍💼"],
+    theme: "optimisation"
   }
 ];
 

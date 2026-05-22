@@ -22,8 +22,8 @@ function parse(src) {
     .toLowerCase()
     .replace(/\s+/g, "")
     .replace(/\*\*/g, "^")           // Python-style ** becomes ^
-    .replace(/(\d)(x|\()/g, "$1*$2") // "2x" → "2*x", "2(" → "2*("
-    .replace(/(x)(\()/g,  "$1*$2");  // "x(" → "x*("
+    .replace(/(\d)([a-z(])/g, "$1*$2") // "2x" → "2*x", "2(" → "2*(", "9ln(" → "9*ln("
+    .replace(/(x)(\()/g,  "$1*$2");   // "x(" → "x*("
 
   let pos = 0; // current position in the string
 
@@ -163,17 +163,26 @@ const PALETTE = ["#E53935", "#1976D2", "#388E3C", "#F57C00", "#7B1FA2", "#00838F
 // Each entry: { expr: string, color: string, fn: compiled function | null }
 let functions = [];
 
+// CSS-pixel dimensions of the canvas (set in resizeCanvas).
+// We keep these separate from canvas.width/height (which are physical pixels
+// = displayW * devicePixelRatio) because ctx.scale(ratio, ratio) means all
+// our drawing coordinates must be in CSS pixels, not physical pixels.
+let displayW = 0;
+let displayH = 0;
+
 let debounceTimer = null; // used to avoid compiling on every keystroke
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  COORDINATE CONVERSION
-//  We need to convert between "math space" (x, y) and "canvas pixel space"
-//  constantly — for drawing and for the mouse coordinate display.
+//  We convert between "math space" (x, y) and "CSS-pixel canvas space".
+//  After ctx.scale(devicePixelRatio, devicePixelRatio) all drawing commands
+//  expect CSS pixels, so we use displayW/displayH — not canvas.width/height
+//  (which are the larger physical-pixel buffer dimensions).
 // ─────────────────────────────────────────────────────────────────────────────
-function toCanvasX(x) { return (x - view.xMin) / (view.xMax - view.xMin) * canvas.width; }
-function toCanvasY(y) { return (1 - (y - view.yMin) / (view.yMax - view.yMin)) * canvas.height; }
-function toMathX(cx)  { return view.xMin + (cx / canvas.width)  * (view.xMax - view.xMin); }
-function toMathY(cy)  { return view.yMin + (1 - cy / canvas.height) * (view.yMax - view.yMin); }
+function toCanvasX(x) { return (x - view.xMin) / (view.xMax - view.xMin) * displayW; }
+function toCanvasY(y) { return (1 - (y - view.yMin) / (view.yMax - view.yMin)) * displayH; }
+function toMathX(cx)  { return view.xMin + (cx / displayW)  * (view.xMax - view.xMin); }
+function toMathY(cy)  { return view.yMin + (1 - cy / displayH) * (view.yMax - view.yMin); }
 
 // Helper to read a CSS variable value — used for theme-aware colours
 function cssVar(name) {
@@ -184,8 +193,10 @@ function cssVar(name) {
 //  DRAW — redraws the entire canvas from scratch every time anything changes
 // ─────────────────────────────────────────────────────────────────────────────
 function draw() {
-  const W = canvas.width;
-  const H = canvas.height;
+  // Use CSS-pixel dimensions — ctx.scale(ratio, ratio) is already applied
+  const W = displayW;
+  const H = displayH;
+  if (W === 0 || H === 0) return; // canvas not yet sized
   ctx.clearRect(0, 0, W, H);
 
   // Read colours from CSS variables so we respect the current light/dark theme
@@ -198,7 +209,7 @@ function draw() {
   ctx.fillRect(0, 0, W, H);
 
   // ── Grid ──────────────────────────────────────────────────────────────────
-  // We compute a "nice" step so the grid lines always land on round numbers
+  // We compute a nice step so the grid lines always land on round numbers
   ctx.strokeStyle = cssVar("--paper-2") || "#f2f0e8";
   ctx.lineWidth   = 1;
 
@@ -264,8 +275,8 @@ function draw() {
 
 // Plots a single function curve in the given colour
 function drawCurve(fn, color) {
-  const W     = canvas.width;
-  const STEPS = W * 2; // we oversample (2 points per pixel) for a smooth curve
+  const W     = displayW; // CSS pixels — consistent with the scaled context
+  const STEPS = W * 2;    // we oversample (2 points per pixel) for a smooth curve
 
   ctx.strokeStyle = color;
   ctx.lineWidth   = 2.5;
@@ -472,9 +483,9 @@ canvas.addEventListener("wheel", e => {
   e.preventDefault();
   const factor = e.deltaY > 0 ? 1.15 : 0.87;
   const rect   = canvas.getBoundingClientRect();
-  // Convert mouse position to math coordinates before we change the view
-  const mx = toMathX((e.clientX - rect.left)  * (canvas.width  / rect.width));
-  const my = toMathY((e.clientY - rect.top)   * (canvas.height / rect.height));
+  // e.clientX − rect.left is already in CSS pixels, matching our scaled context
+  const mx = toMathX(e.clientX - rect.left);
+  const my = toMathY(e.clientY - rect.top);
   zoom(factor, mx, my);
 }, { passive: false }); // we need preventDefault so the page doesn't scroll
 
@@ -488,9 +499,9 @@ canvas.addEventListener("mousedown", e => {
 });
 
 canvas.addEventListener("mousemove", e => {
-  // Always show coordinates under the cursor
-  const mx = toMathX(e.offsetX * (canvas.width  / canvas.offsetWidth));
-  const my = toMathY(e.offsetY * (canvas.height / canvas.offsetHeight));
+  // e.offsetX/Y are already in CSS pixels — no DPR conversion needed here
+  const mx = toMathX(e.offsetX);
+  const my = toMathY(e.offsetY);
   coordsEl.textContent = `x = ${mx.toFixed(3)},  y = ${my.toFixed(3)}`;
 
   if (!dragging || !dragStart) return;
@@ -524,15 +535,22 @@ function resizeCanvas() {
   const w     = Math.floor(rect.width);
   const h     = Math.floor(w * (2 / 3)); // 3:2 aspect ratio
 
-  // Internal resolution (high-DPI)
+  // Save the CSS-pixel dimensions so all coordinate functions use them.
+  // canvas.width = w * ratio (physical pixels), but we draw in CSS pixels.
+  displayW = w;
+  displayH = h;
+
+  // Internal buffer resolution (high-DPI — sharp on Retina)
   canvas.width  = w * ratio;
   canvas.height = h * ratio;
 
-  // CSS display size (what the user sees)
+  // CSS display size (what the user actually sees on screen)
   canvas.style.width  = w + "px";
   canvas.style.height = h + "px";
 
-  ctx.scale(ratio, ratio); // scale context so our coordinates stay in CSS pixels
+  // After every resize we must re-apply the scale because the canvas reset
+  // clears the transform matrix.  With this scale, all draw calls use CSS px.
+  ctx.scale(ratio, ratio);
   draw();
 }
 
