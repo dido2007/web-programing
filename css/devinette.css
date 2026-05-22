@@ -1,0 +1,296 @@
+/* ── Layout ─────────────────────────────────────────────────── */
+.dev-shell {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+.dev-state { display: none; }
+.dev-state.active { display: block; }
+
+/* ── Menu ───────────────────────────────────────────────────── */
+.dev-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 36px 0 6px;
+}
+
+.dev-subtitle {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin-bottom: 32px;
+}
+
+.dev-diff-wrap {
+  margin-bottom: 28px;
+}
+
+.dev-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.dev-diff-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dev-diff-options .sk-btn.selected {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ── Liste des devinettes ───────────────────────────────────── */
+.dev-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dev-list-item {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 14px 18px;
+  cursor: pointer;
+  background: var(--paper);
+  box-shadow: var(--shadow-sk);
+  transition: background 0.12s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dev-list-item:hover {
+  background: var(--paper-2);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.dev-list-item.done {
+  opacity: 0.6;
+}
+
+.dev-list-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  min-width: 24px;
+}
+
+.dev-list-info { flex: 1; }
+
+.dev-list-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.dev-list-theme {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.dev-list-stars {
+  font-size: 0.75rem;
+  color: #F57C00;
+}
+
+/* ── Lecture ────────────────────────────────────────────────── */
+.dev-play-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 28px 0 18px;
+}
+
+.dev-stars {
+  font-size: 1rem;
+  color: #F57C00;
+}
+
+/* ── Carte narratif ─────────────────────────────────────────── */
+.dev-story-card {
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-xl);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 28px 24px 22px;
+  background: var(--paper);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.dev-story-card::before {
+  content: "";
+  position: absolute;
+  top: -3px; left: 20px; right: 20px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.dev-characters {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.dev-story-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.dev-story-text {
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.dev-question-text {
+  font-family: 'Kalam', cursive;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  border-top: 1.5px dashed var(--ink-muted);
+  padding-top: 14px;
+}
+
+/* ── Zone réponse ───────────────────────────────────────────── */
+.dev-answer-zone {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.dev-input {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  padding: 11px 16px;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sk);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dev-input:focus { border-color: var(--accent); }
+
+/* ── Indice ─────────────────────────────────────────────────── */
+.dev-hint-wrap {
+  margin-bottom: 12px;
+}
+
+.dev-hint-btn {
+  font-size: 0.82rem;
+  padding: 6px 14px;
+}
+
+.dev-hint-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #7B1FA2;
+  margin-top: 8px;
+  min-height: 1.2rem;
+  line-height: 1.5;
+}
+
+/* ── Feedback ───────────────────────────────────────────────── */
+.dev-feedback {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  min-height: 2rem;
+  margin: 8px 0;
+}
+
+.dev-feedback.correct { color: var(--correct); }
+.dev-feedback.wrong   { color: var(--wrong); }
+
+/* ── Résultat / Explication ─────────────────────────────────── */
+.dev-result-card {
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius-xl);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 36px 28px;
+  background: var(--paper);
+  margin-top: 40px;
+  text-align: center;
+}
+
+.dev-result-icon {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.dev-result-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.dev-result-label.correct { color: var(--correct); }
+.dev-result-label.wrong   { color: var(--wrong); }
+
+.dev-result-answer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.dev-explication-wrap {
+  background: var(--paper-2);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.dev-explication-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+}
+
+.dev-explication-text {
+  font-family: 'Kalam', cursive;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.dev-result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

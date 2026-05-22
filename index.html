@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="explorer.html">Grapheur</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="calculatrice.html">Calculatrice</a></li>
+      <li><a href="devinette.html">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="home-hero" aria-label="Présentation">
+      <div class="particles" id="particles" aria-hidden="true"></div>
+
+      <h1 class="home-hero-title">MathQuiz 💣</h1>
+      <p class="home-hero-subtitle">
+        Réponds avant que la bombe explose.<br>
+        Explore les fonctions. Découvre l'histoire des maths.
+      </p>
+      <a href="quiz.html" class="sk-btn sk-btn-accent home-hero-cta">
+        Jouer maintenant 🎯
+      </a>
+    </section>
+
+    <!-- Cards -->
+    <section aria-label="Sections du site">
+      <p class="home-section-label">Explorer</p>
+      <div class="home-cards">
+
+        <a href="explorer.html" class="home-card">
+          <span class="home-card-icon">📈</span>
+          <h2 class="home-card-title">Grapheur</h2>
+          <p class="home-card-desc">
+            Trace plusieurs fonctions simultanément sur
+            un canvas interactif avec zoom et pan.
+          </p>
+        </a>
+
+        <a href="timeline.html" class="home-card">
+          <span class="home-card-icon">📜</span>
+          <h2 class="home-card-title">Timeline</h2>
+          <p class="home-card-desc">
+            Voyage dans l'histoire des mathématiques,
+            d'Euclide à Turing. Retourne les cartes !
+          </p>
+        </a>
+
+        <a href="calculatrice.html" class="home-card">
+          <span class="home-card-icon">🧮</span>
+          <h2 class="home-card-title">Calculatrice</h2>
+          <p class="home-card-desc">
+            Calculatrice scientifique avec sin, cos, log,
+            sqrt, puissances et historique des calculs.
+          </p>
+        </a>
+
+        <a href="devinette.html" class="home-card">
+          <span class="home-card-icon">🧩</span>
+          <h2 class="home-card-title">Devinette</h2>
+          <p class="home-card-desc">
+            Des problèmes narratifs avec de vrais personnages.
+            Lis l'histoire et trouve la réponse.
+          </p>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script>
+    "use strict";
+    const SYMBOLS = ["∫","∑","π","√","∞","dx","∂","Δ","θ","λ","∇","ℝ","ℕ","e","φ"];
+    const container = document.getElementById("particles");
+    for (let i = 0; i < 18; i++) {
+      const el = document.createElement("span");
+      el.className = "particle";
+      el.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+      el.style.left             = Math.random() * 100 + "%";
+      el.style.fontSize         = (1.2 + Math.random() * 2.4) + "rem";
+      el.style.animationDuration = (12 + Math.random() * 16) + "s";
+      el.style.animationDelay   = -(Math.random() * 20) + "s";
+      container.appendChild(el);
+    }
+    document.querySelectorAll(".sk-nav-links a").forEach(a => {
+      if (a.href === location.href) a.classList.add("active");
+    });
+  </script>
+</body>
+</html>

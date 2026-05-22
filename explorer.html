@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grapheur — MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/explorer.css">
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="explorer.html" class="active">Grapheur</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="calculatrice.html">Calculatrice</a></li>
+      <li><a href="devinette.html">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <header class="explorer-header">
+    <h1 class="explorer-title">📈 Grapheur</h1>
+    <p class="explorer-subtitle">Trace n'importe quelle fonction — supporte sin, cos, tan, exp, log, sqrt, abs, x^n</p>
+  </header>
+
+  <main class="explorer-shell">
+
+    <!-- Contrôles -->
+     
+    <div class="explorer-controls">
+      <div class="explorer-input-wrap">
+        <span class="explorer-input-label">Fonctions</span>
+        <div id="fn-list"></div>
+        <button class="sk-btn sk-btn-ghost fn-add-btn" id="add-fn-btn" type="button">+ Ajouter une fonction</button>
+      </div>
+
+      <div class="zoom-btns">
+        <button class="sk-btn sk-btn-ghost" id="zoom-in"    aria-label="Zoom avant"      title="Zoom avant">＋</button>
+        <button class="sk-btn sk-btn-ghost" id="zoom-out"   aria-label="Zoom arrière"    title="Zoom arrière">－</button>
+        <button class="sk-btn sk-btn-ghost" id="zoom-reset" aria-label="Réinitialiser"   title="Réinitialiser">↺</button>
+      </div>
+    </div>
+
+    <!-- Canvas -->
+    <div class="canvas-wrap">
+      <canvas id="graph-canvas" width="720" height="480" aria-label="Graphe de la fonction"></canvas>
+      <div class="canvas-coords" id="canvas-coords"></div>
+    </div>
+
+    <!-- Erreur -->
+    <p class="explorer-error" id="explorer-error" aria-live="polite"></p>
+
+    <!-- Exemples -->
+    <div class="explorer-examples">
+      <span class="examples-label">Exemples</span>
+      <div class="examples-chips" role="list">
+        <button class="example-chip" data-fn="sin(x)" role="listitem">sin(x)</button>
+        <button class="example-chip" data-fn="cos(x)" role="listitem">cos(x)</button>
+        <button class="example-chip" data-fn="tan(x)" role="listitem">tan(x)</button>
+        <button class="example-chip" data-fn="x^2" role="listitem">x²</button>
+        <button class="example-chip" data-fn="x^3 - 3*x" role="listitem">x³ − 3x</button>
+        <button class="example-chip" data-fn="exp(x)" role="listitem">exp(x)</button>
+        <button class="example-chip" data-fn="log(x)" role="listitem">ln(x)</button>
+        <button class="example-chip" data-fn="sqrt(x)" role="listitem">√x</button>
+        <button class="example-chip" data-fn="abs(x)" role="listitem">|x|</button>
+        <button class="example-chip" data-fn="1/x" role="listitem">1/x</button>
+        <button class="example-chip" data-fn="sin(x)/x" role="listitem">sin(x)/x</button>
+        <button class="example-chip" data-fn="x*sin(x)" role="listitem">x·sin(x)</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/explorer.js"></script>
+</body>
+</html>

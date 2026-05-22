@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devinette — MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/devinette.css">
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="explorer.html">Grapheur</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="calculatrice.html">Calculatrice</a></li>
+      <li><a href="devinette.html" class="active">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <main class="dev-shell">
+
+    <!-- ── État 1 : Menu ────────────────────────────────────── -->
+    <section class="dev-state active" id="dev-menu">
+      <h1 class="dev-title">🧩 Devinettes</h1>
+      <p class="dev-subtitle">Des histoires vraies, un problème à résoudre.</p>
+
+      <div class="dev-diff-wrap">
+        <span class="dev-label">Difficulté</span>
+        <div class="dev-diff-options" id="dev-diff-options">
+          <button class="sk-btn sk-btn-ghost selected" data-diff="1">⭐ Facile</button>
+          <button class="sk-btn sk-btn-ghost"          data-diff="2">⭐⭐ Moyen</button>
+          <button class="sk-btn sk-btn-ghost"          data-diff="3">⭐⭐⭐ Difficile</button>
+          <button class="sk-btn sk-btn-ghost"          data-diff="0">Tout</button>
+        </div>
+      </div>
+
+      <ul class="dev-list" id="dev-list" aria-label="Liste des devinettes"></ul>
+    </section>
+
+    <!-- ── État 2 : Lecture + Réponse ──────────────────────── -->
+    <section class="dev-state" id="dev-play">
+
+      <div class="dev-play-header">
+        <button class="sk-btn sk-btn-ghost dev-back-btn" id="dev-back-btn" type="button">← Retour</button>
+        <div class="dev-stars" id="dev-stars"></div>
+      </div>
+
+      <div class="dev-story-card" id="dev-story-card">
+        <div class="dev-characters" id="dev-characters"></div>
+        <h2 class="dev-story-title" id="dev-story-title"></h2>
+        <p class="dev-story-text" id="dev-story-text"></p>
+        <p class="dev-question-text" id="dev-question-text"></p>
+      </div>
+
+      <!-- Zone de réponse -->
+      <div class="dev-answer-zone" id="dev-answer-zone">
+        <input
+          type="text"
+          class="dev-input"
+          id="dev-input"
+          placeholder="Ta réponse…"
+          inputmode="decimal"
+          autocomplete="off"
+          aria-label="Ta réponse"
+        >
+        <button class="sk-btn sk-btn-accent" id="dev-submit" type="button">Valider ✓</button>
+      </div>
+
+      <div class="dev-hint-wrap">
+        <button class="sk-btn sk-btn-ghost dev-hint-btn" id="dev-hint-btn" type="button">💡 Indice</button>
+        <p class="dev-hint-text" id="dev-hint-text"></p>
+      </div>
+
+      <div class="dev-feedback" id="dev-feedback" aria-live="polite"></div>
+
+    </section>
+
+    <!-- ── État 3 : Explication ─────────────────────────────── -->
+    <section class="dev-state" id="dev-result">
+      <div class="dev-result-card">
+        <p class="dev-result-icon" id="dev-result-icon">✓</p>
+        <p class="dev-result-label" id="dev-result-label">Bonne réponse !</p>
+        <p class="dev-result-answer" id="dev-result-answer"></p>
+        <div class="dev-explication-wrap">
+          <p class="dev-explication-title">📖 Explication</p>
+          <p class="dev-explication-text" id="dev-explication-text"></p>
+        </div>
+        <div class="dev-result-actions">
+          <button class="sk-btn sk-btn-ghost" id="dev-retry-btn" type="button">🔄 Réessayer</button>
+          <button class="sk-btn sk-btn-primary" id="dev-menu-btn" type="button">← Menu</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/devinette.js"></script>
+</body>
+</html>

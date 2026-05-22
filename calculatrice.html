@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculatrice — MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/calculatrice.css">
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="explorer.html">Grapheur</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="calculatrice.html" class="active">Calculatrice</a></li>
+      <li><a href="devinette.html">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <header class="calc-header">
+    <h1 class="calc-title">🧮 Calculatrice</h1>
+    <p class="calc-subtitle">Calculatrice scientifique — sin, cos, log, √, puissances</p>
+  </header>
+
+  <main class="calc-shell">
+
+    <div class="calc-wrap">
+
+      <!-- Écran -->
+      <div class="calc-screen" aria-label="Écran de la calculatrice">
+        <div class="calc-expr" id="calc-expr" aria-live="polite"></div>
+        <div class="calc-result" id="calc-result">0</div>
+      </div>
+
+      <!-- Clavier -->
+      <div class="calc-keyboard" role="group" aria-label="Clavier">
+
+        <!-- Ligne 1 : fonctions -->
+        <button class="calc-btn calc-fn" data-action="fn" data-fn="sin(" aria-label="sinus">sin</button>
+        <button class="calc-btn calc-fn" data-action="fn" data-fn="cos(" aria-label="cosinus">cos</button>
+        <button class="calc-btn calc-fn" data-action="fn" data-fn="tan(" aria-label="tangente">tan</button>
+        <button class="calc-btn calc-fn" data-action="fn" data-fn="log(" aria-label="logarithme">log</button>
+        <button class="calc-btn calc-fn" data-action="fn" data-fn="ln("  aria-label="logarithme naturel">ln</button>
+
+        <!-- Ligne 2 : fonctions -->
+        <button class="calc-btn calc-fn" data-action="fn"  data-fn="sqrt("  aria-label="racine carrée">√</button>
+        <button class="calc-btn calc-fn" data-action="fn"  data-fn="abs("   aria-label="valeur absolue">|x|</button>
+        <button class="calc-btn calc-op" data-action="insert" data-val="^"  aria-label="puissance">xⁿ</button>
+        <button class="calc-btn calc-fn" data-action="insert" data-val="pi" aria-label="pi">π</button>
+        <button class="calc-btn calc-fn" data-action="insert" data-val="e"  aria-label="e">e</button>
+
+        <!-- Ligne 3 : contrôles + parenthèses -->
+        <button class="calc-btn calc-clear"  data-action="clear"  aria-label="Effacer tout">C</button>
+        <button class="calc-btn calc-del"    data-action="del"    aria-label="Supprimer dernier caractère">⌫</button>
+        <button class="calc-btn calc-paren"  data-action="insert" data-val="(" aria-label="parenthèse ouvrante">(</button>
+        <button class="calc-btn calc-paren"  data-action="insert" data-val=")" aria-label="parenthèse fermante">)</button>
+        <button class="calc-btn calc-op"     data-action="insert" data-val="%" aria-label="modulo">%</button>
+
+        <!-- Ligne 4-6 : chiffres + opérateurs -->
+        <button class="calc-btn calc-num" data-action="insert" data-val="7">7</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="8">8</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="9">9</button>
+        <button class="calc-btn calc-op"  data-action="insert" data-val="/">÷</button>
+        <button class="calc-btn calc-op"  data-action="insert" data-val="*">×</button>
+
+        <button class="calc-btn calc-num" data-action="insert" data-val="4">4</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="5">5</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="6">6</button>
+        <button class="calc-btn calc-op"  data-action="insert" data-val="-">−</button>
+        <button class="calc-btn calc-op"  data-action="insert" data-val="+">+</button>
+
+        <button class="calc-btn calc-num" data-action="insert" data-val="1">1</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="2">2</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="3">3</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val="0">0</button>
+        <button class="calc-btn calc-num" data-action="insert" data-val=".">.</button>
+
+        <!-- Ligne 7 : = -->
+        <button class="calc-btn calc-equals" data-action="eval" aria-label="Calculer" style="grid-column: span 5">=</button>
+
+      </div>
+    </div>
+
+    <!-- Historique -->
+    <div class="calc-history-wrap">
+      <p class="calc-history-label">Historique</p>
+      <ul class="calc-history" id="calc-history" aria-label="Historique des calculs"></ul>
+    </div>
+
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/explorer.js"></script>
+  <script src="js/calculatrice.js"></script>
+</body>
+</html>

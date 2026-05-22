@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline — MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/timeline.css">
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html">Quiz</a></li>
+      <li><a href="explorer.html">Grapheur</a></li>
+      <li><a href="timeline.html" class="active">Timeline</a></li>
+      <li><a href="calculatrice.html">Calculatrice</a></li>
+      <li><a href="devinette.html">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <header class="timeline-header">
+    <h1 class="timeline-title">📜 Histoire des Maths</h1>
+    <p class="timeline-subtitle">D'Euclide à Turing — clique sur une carte pour la retourner</p>
+  </header>
+
+  <!-- Onglets catégories -->
+  <div class="tl-tabs-wrap">
+    <div class="tl-tabs" role="tablist" aria-label="Filtrer par catégorie">
+      <button class="tl-tab active" data-cat="all"         role="tab">Tout</button>
+      <button class="tl-tab" data-cat="algebra"            role="tab">🔢 Algèbre</button>
+      <button class="tl-tab" data-cat="geometry"           role="tab">📐 Géométrie</button>
+      <button class="tl-tab" data-cat="analysis"           role="tab">∫ Analyse</button>
+      <button class="tl-tab" data-cat="probability"        role="tab">🎲 Probabilités</button>
+      <button class="tl-tab" data-cat="cs"                 role="tab">💻 CS &amp; Logique</button>
+    </div>
+  </div>
+
+  <main>
+    <ol class="timeline" id="timeline" aria-label="Cartes de l'histoire des mathématiques">
+
+      <!-- GÉOMÉTRIE -->
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Pythagore — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">~500 av. J.-C.</time>
+            <span class="tl-emoji">📐</span>
+            <h2 class="tl-name">Pythagore</h2>
+            <p class="tl-discovery">Le théorème fondamental de la géométrie</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Dans tout triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés : a² + b² = c². Connu des Babyloniens 1000 ans avant Pythagore, c'est lui qui en donne la première preuve générale. Sa confrérie mathématique gardait leurs découvertes secrètes — sous peine de mort.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Euclide — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">~300 av. J.-C.</time>
+            <span class="tl-emoji">📏</span>
+            <h2 class="tl-name">Euclide</h2>
+            <p class="tl-discovery">Les Éléments — fondation de la géométrie</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Euclide d'Alexandrie rédige les <em>Éléments</em>, 13 livres compilant toute la géométrie grecque. Cet ouvrage fut le manuel de mathématiques le plus utilisé de l'histoire — plus de 2000 ans. À partir de 5 postulats simples, il construit toute la géométrie plane et prouve l'infinité des nombres premiers.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Archimède — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">~250 av. J.-C.</time>
+            <span class="tl-emoji">⭕</span>
+            <h2 class="tl-name">Archimède</h2>
+            <p class="tl-discovery">Approximation de π et calcul d'aires</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Archimède encadre π entre 223/71 et 22/7 en inscrivant et circumscrivant des polygones à 96 côtés dans un cercle. Il anticipe aussi le calcul intégral en calculant l'aire sous une parabole — 1900 ans avant Newton. Selon la légende, il courut nu dans Syracuse en criant « Eurêka ! »</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- ALGÈBRE -->
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Brahmagupta — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">628</time>
+            <span class="tl-emoji">0️⃣</span>
+            <h2 class="tl-name">Brahmagupta</h2>
+            <p class="tl-discovery">Formalisation du zéro comme nombre</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Le mathématicien indien Brahmagupta est le premier à traiter le zéro comme un nombre à part entière avec ses propres règles arithmétiques. Il définit aussi les nombres négatifs et leurs règles de calcul — une révolution conceptuelle qui prendra des siècles à s'imposer en Europe.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Al-Khwarizmi — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">~820</time>
+            <span class="tl-emoji">🔢</span>
+            <h2 class="tl-name">Al-Khwarizmi</h2>
+            <p class="tl-discovery">Naissance de l'algèbre</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Muhammad ibn Musa al-Khwarizmi écrit <em>Kitāb al-mukhtaṣar fī ḥisāb al-jabr</em>. Le titre donne le mot « algèbre », et son propre nom latinisé donne « algorithme ». Il résout les équations du second degré par complétion du carré — sans notation symbolique, uniquement avec des mots.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Fibonacci — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1202</time>
+            <span class="tl-emoji">🐇</span>
+            <h2 class="tl-name">Fibonacci</h2>
+            <p class="tl-discovery">Introduction des chiffres arabes en Europe</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Leonardo Fibonacci publie le <em>Liber Abaci</em>, popularisant les chiffres hindou-arabes (0-9) en Europe. Il y introduit la suite 1, 1, 2, 3, 5, 8, 13… où chaque terme est la somme des deux précédents — omniprésente dans la nature, des pétales de fleurs aux spirales des coquillages.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Cardano et Tartaglia — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1545</time>
+            <span class="tl-emoji">🎲</span>
+            <h2 class="tl-name">Cardano &amp; Tartaglia</h2>
+            <p class="tl-discovery">Résolution de l'équation du 3e degré</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Cardano publie dans l'<em>Ars Magna</em> la formule pour résoudre les cubiques — un secret que Tartaglia lui avait confié sous serment. Ce travail force à inventer les nombres complexes : pour résoudre des équations à solutions réelles, il faut passer par √(−1). Le scandale qui s'ensuit est mémorable.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Fermat — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1637</time>
+            <span class="tl-emoji">✏️</span>
+            <h2 class="tl-name">Fermat</h2>
+            <p class="tl-discovery">Le Grand Théorème — marginal légendaire</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Pierre de Fermat écrit dans la marge d'un livre : « Il m'est impossible de mettre la démonstration ici, car elle est trop longue pour cette marge. » Son théorème — xⁿ + yⁿ = zⁿ n'a pas de solution entière pour n ≥ 3 — restera sans preuve pendant 358 ans, jusqu'à Andrew Wiles en 1995.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Galois — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1832</time>
+            <span class="tl-emoji">⚔️</span>
+            <h2 class="tl-name">Évariste Galois</h2>
+            <p class="tl-discovery">Théorie des groupes et équations polynomiales</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Mort en duel à 20 ans, Galois passe la nuit précédente à écrire en toute hâte ses travaux révolutionnaires. Il prouve qu'il n'existe pas de formule générale pour les équations de degré ≥ 5 en utilisant la symétrie de leurs racines — fondant ainsi la théorie des groupes, pilier de l'algèbre moderne.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="algebra">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Emmy Noether — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1915</time>
+            <span class="tl-emoji">💎</span>
+            <h2 class="tl-name">Emmy Noether</h2>
+            <p class="tl-discovery">Algèbre abstraite et théorème de Noether</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Einstein et Hilbert la qualifiaient de plus grande mathématicienne de l'histoire. Son théorème (1915) lie chaque symétrie physique à une loi de conservation — la pierre angulaire de la physique théorique moderne. Elle révolutionne aussi l'algèbre abstraite en introduisant les anneaux et idéaux noethériens.</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- GÉOMÉTRIE (suite) -->
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Descartes — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1637</time>
+            <span class="tl-emoji">🗺️</span>
+            <h2 class="tl-name">Descartes</h2>
+            <p class="tl-discovery">Le plan cartésien — algèbre et géométrie unifiées</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">René Descartes invente le repère cartésien (x, y), unifiant pour la première fois l'algèbre et la géométrie. Une courbe devient une équation, une équation devient une courbe. Selon la légende, cette idée lui vint en observant une mouche sur le plafond de sa chambre — comment décrire sa position ?</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Riemann — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1854</time>
+            <span class="tl-emoji">🌐</span>
+            <h2 class="tl-name">Riemann</h2>
+            <p class="tl-discovery">Géométrie non-euclidienne et hypothèse de Riemann</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Riemann montre qu'il existe des espaces courbés cohérents où la somme des angles d'un triangle est différente de 180°. Sa géométrie fondera 60 ans plus tard la relativité générale d'Einstein. Son hypothèse sur les zéros de la fonction zêta reste le problème ouvert le plus célèbre des maths — avec 1 million $ à la clé.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="geometry">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Poincaré — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1895</time>
+            <span class="tl-emoji">🔵</span>
+            <h2 class="tl-name">Poincaré</h2>
+            <p class="tl-discovery">Naissance de la topologie</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Henri Poincaré fonde la topologie — la géométrie de la forme sans mesure de distance. Pour un topologue, une tasse et un beignet sont identiques (une anse = un trou). Sa conjecture — toute variété simplement connexe de dimension 3 est une sphère — fut prouvée par Perelman en 2003, qui refusa le million de dollars du prix Millenium.</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- ANALYSE -->
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Napier — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1614</time>
+            <span class="tl-emoji">📊</span>
+            <h2 class="tl-name">John Napier</h2>
+            <p class="tl-discovery">Invention des logarithmes</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Napier publie ses tables de logarithmes après 20 ans de travail. Les astronomes pouvaient réduire des heures de calcul à quelques minutes : multiplier devient additionner leurs logarithmes. Kepler a dit que cette invention lui avait « doublé la vie ». La règle à calcul, basée sur ce principe, régnera jusqu'aux années 1970.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Newton et Leibniz — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1675–1687</time>
+            <span class="tl-emoji">🍎</span>
+            <h2 class="tl-name">Newton &amp; Leibniz</h2>
+            <p class="tl-discovery">Invention du calcul infinitésimal</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Newton développe son calcul des fluxions vers 1665 ; Leibniz sa version indépendante vers 1675. La querelle de priorité qui s'ensuit divise les mathématiciens anglais et européens pendant un siècle. La notation dy/dx de Leibniz a triomphé — nous l'utilisons encore. Newton lui refusait toute reconnaissance jusqu'à la fin.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Euler — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1736</time>
+            <span class="tl-emoji">✨</span>
+            <h2 class="tl-name">Euler</h2>
+            <p class="tl-discovery">e, π, i et la formule la plus belle des maths</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Euler invente les notations e, π, i, Σ, f(x). Sa formule e<sup>iπ</sup> + 1 = 0 relie les cinq constantes les plus importantes des maths. Aveugle les 17 dernières années de sa vie, il reste le mathématicien le plus productif de l'histoire — plus de 800 publications. Il résout aussi le problème des ponts de Königsberg, fondant la théorie des graphes.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Fourier — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1822</time>
+            <span class="tl-emoji">🌊</span>
+            <h2 class="tl-name">Fourier</h2>
+            <p class="tl-discovery">Décomposition d'un signal en fréquences</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Joseph Fourier démontre que toute fonction périodique peut s'écrire comme une somme de sinus et cosinus. Sa transformée de Fourier est aujourd'hui omniprésente : compression JPEG, WiFi, MP3, IRM médical, reconnaissance vocale. En étudiant la chaleur, il a aussi prédit l'effet de serre dès 1824.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Cauchy — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1821</time>
+            <span class="tl-emoji">⚖️</span>
+            <h2 class="tl-name">Cauchy</h2>
+            <p class="tl-discovery">Rigueur de l'analyse — définition des limites</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Cauchy formalise la notion de limite avec la définition ε-δ, rendant le calcul infinitésimal rigoureux pour la première fois. Ses <em>Cours d'Analyse</em> (1821) révolutionnent l'enseignement des maths. Il publia 789 mémoires — un record absolu — et donna son nom à 16 théorèmes et concepts mathématiques.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="analysis">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Weierstrass — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1872</time>
+            <span class="tl-emoji">🌀</span>
+            <h2 class="tl-name">Weierstrass</h2>
+            <p class="tl-discovery">Fonction continue mais nulle part dérivable</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Karl Weierstrass construit une fonction qui est continue partout — mais sans tangente en aucun point. Quand il la présente à Berlin, ses collègues refusent d'y croire : « Une telle chose ne peut exister. » Ce « monstre » brise l'intuition géométrique et force à redéfinir riguoureusement la notion de dérivée.</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- PROBABILITÉS -->
+      <li class="tl-entry" data-category="probability">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Pascal et Fermat — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1654</time>
+            <span class="tl-emoji">🎰</span>
+            <h2 class="tl-name">Pascal &amp; Fermat</h2>
+            <p class="tl-discovery">Naissance du calcul des probabilités</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Dans une correspondance sur un problème de jeux de dés (le « problème des partis »), Pascal et Fermat fondent la théorie des probabilités. Pascal développe aussi son triangle — connu en Chine depuis le XIe siècle. La première application pratique fut l'assurance maritime : comment fixer le prix d'un risque ?</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="probability">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Bayes — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1763</time>
+            <span class="tl-emoji">🎯</span>
+            <h2 class="tl-name">Thomas Bayes</h2>
+            <p class="tl-discovery">Probabilités conditionnelles et inférence</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Le théorème de Bayes — publié à titre posthume — permet de mettre à jour une probabilité quand on reçoit de nouvelles informations. Ignoré pendant des siècles, il est aujourd'hui le fondement du machine learning, des filtres anti-spam, du diagnostic médical et de la navigation par GPS. P(A|B) = P(B|A)·P(A) / P(B).</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="probability">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Laplace — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1812</time>
+            <span class="tl-emoji">🌌</span>
+            <h2 class="tl-name">Laplace</h2>
+            <p class="tl-discovery">Théorie analytique des probabilités</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Pierre-Simon Laplace unifie la théorie des probabilités dans sa <em>Théorie analytique</em> (1812). Il formule le théorème central limite — la loi normale émerge de la somme de variables aléatoires indépendantes — et invente le démon de Laplace : un être omniscient qui connaissant l'état de l'univers, prédirait l'avenir entier.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="probability">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Gauss — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">~1800</time>
+            <span class="tl-emoji">🔔</span>
+            <h2 class="tl-name">Gauss</h2>
+            <p class="tl-discovery">La loi normale — courbe en cloche</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Carl Friedrich Gauss développe la loi normale (courbe en cloche) pour modéliser les erreurs de mesure en astronomie. Enfant prodige, il aurait calculé la somme 1+2+…+100 = 5050 en quelques secondes à 8 ans. Il contribue aussi à la géométrie non-euclidienne, aux nombres complexes et à la théorie des nombres.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="probability">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Florence Nightingale — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1858</time>
+            <span class="tl-emoji">🏥</span>
+            <h2 class="tl-name">Florence Nightingale</h2>
+            <p class="tl-discovery">Statistiques visuelles — infographie inventée</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Florence Nightingale invente le diagramme en rose polaire (« coxcomb ») pour montrer que plus de soldats mouraient de maladies évitables que de blessures de combat. Sa visualisation statistique convainc le gouvernement britannique de réformer les hôpitaux militaires — sauvant des milliers de vies. Elle fut la première femme membre de la Royal Statistical Society.</p>
+          </div>
+        </div>
+      </li>
+
+      <!-- CS & LOGIQUE -->
+      <li class="tl-entry" data-category="cs">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Cantor — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1874</time>
+            <span class="tl-emoji">∞</span>
+            <h2 class="tl-name">Cantor</h2>
+            <p class="tl-discovery">Infinis de tailles différentes</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Cantor prouve qu'il existe différentes tailles d'infini : l'infini des entiers est strictement plus petit que l'infini des réels. Sa diagonale de Cantor est l'un des arguments les plus élégants des maths. Ses contemporains — dont Poincaré — le traitèrent de « corrupteur de la jeunesse ». Il mourut dans un asile psychiatrique en 1918.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="cs">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Boole — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1854</time>
+            <span class="tl-emoji">⚡</span>
+            <h2 class="tl-name">George Boole</h2>
+            <p class="tl-discovery">L'algèbre booléenne — fondement des circuits logiques</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">George Boole publie <em>An Investigation of the Laws of Thought</em> — créant une algèbre où les variables valent 0 ou 1 et les opérations sont ET, OU, NON. Il pensait formaliser la logique humaine. 80 ans plus tard, Claude Shannon montre que cette algèbre décrit parfaitement les circuits électroniques — c'est le fondement de tout ordinateur.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="cs">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Gödel — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1931</time>
+            <span class="tl-emoji">🔒</span>
+            <h2 class="tl-name">Gödel</h2>
+            <p class="tl-discovery">Théorèmes d'incomplétude — les limites des maths</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Kurt Gödel démontre qu'il existe des vérités mathématiques qui ne peuvent pas être prouvées dans aucun système formel cohérent. En d'autres termes, les mathématiques sont fondamentalement incomplètes. Cette découverte — faite à 25 ans — anéantit le programme de Hilbert qui espérait axiomatiser toutes les maths. Elle reste l'un des résultats les plus profonds du XXe siècle.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="cs">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Turing — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1936</time>
+            <span class="tl-emoji">💻</span>
+            <h2 class="tl-name">Alan Turing</h2>
+            <p class="tl-discovery">Machine de Turing — fondements de l'informatique</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Turing publie « On Computable Numbers » et invente la machine de Turing — un modèle théorique d'ordinateur universel. Il prouve l'indécidabilité du problème de l'arrêt. Pendant la Seconde Guerre mondiale, il casse le code Enigma, sauvant potentiellement des millions de vies. Persécuté pour son homosexualité, il meurt à 41 ans — peut-être par suicide.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-entry" data-category="cs">
+        <div class="tl-flip-card" tabindex="0" role="button" aria-label="Ramanujan — cliquer pour retourner">
+          <div class="tl-front">
+            <time class="tl-date">1913</time>
+            <span class="tl-emoji">🌟</span>
+            <h2 class="tl-name">Ramanujan</h2>
+            <p class="tl-discovery">Le génie autodidacte des nombres</p>
+            <span class="tl-hint">↺ En savoir plus</span>
+          </div>
+          <div class="tl-back">
+            <p class="tl-fact">Srinivasa Ramanujan, autodidacte indien, envoie ses résultats à Hardy à Cambridge. Hardy dira : « Un seul regard suffit à me montrer qu'il avait découvert des choses que personne n'aurait pu inventer. » Ses carnets contiennent des milliers de formules surprenantes sur les nombres, dont certaines ne sont prouvées qu'aujourd'hui. Il mourut à 32 ans de tuberculose.</p>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </main>
+
+  <script src="js/theme.js"></script>
+  <script src="js/timeline.js"></script>
+</body>
+</html>

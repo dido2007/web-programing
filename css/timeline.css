@@ -1,0 +1,198 @@
+/* ── En-tête ───────────────────────────────────────────────── */
+.timeline-header {
+  text-align: center;
+  padding: 36px 24px 20px;
+}
+
+.timeline-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.timeline-subtitle {
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+/* ── Onglets catégories ─────────────────────────────────────── */
+.tl-tabs-wrap {
+  overflow-x: auto;
+  padding: 0 20px 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tl-tabs {
+  display: flex;
+  gap: 8px;
+  min-width: max-content;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.tl-tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 7px 16px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: background 0.12s, color 0.12s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.tl-tab:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.tl-tab.active {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ── Grille ─────────────────────────────────────────────────── */
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ── Entrée (avec animation scroll reveal) ──────────────────── */
+.tl-entry {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  perspective: 800px;
+  height: 220px;
+}
+
+.tl-entry.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tl-entry.hidden {
+  display: none;
+}
+
+/* ── Flip card ──────────────────────────────────────────────── */
+.tl-flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.tl-flip-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-lg);
+}
+
+.tl-entry.flipped .tl-flip-card {
+  transform: rotateY(180deg);
+}
+
+.tl-front,
+.tl-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sk);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.tl-back {
+  transform: rotateY(180deg);
+  background: var(--paper-2);
+  justify-content: center;
+}
+
+/* ── Face avant ─────────────────────────────────────────────── */
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+}
+
+.tl-emoji {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.tl-name {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.tl-discovery {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  flex: 1;
+}
+
+.tl-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--ink-muted);
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ── Face arrière ───────────────────────────────────────────── */
+.tl-fact {
+  font-family: 'Kalam', cursive;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.tl-fact em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .tl-entry {
+    height: 200px;
+  }
+}

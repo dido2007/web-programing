@@ -1,0 +1,229 @@
+/* ── En-tête ───────────────────────────────────────────────── */
+.explorer-header {
+  text-align: center;
+  padding: 36px 24px 24px;
+}
+
+.explorer-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.explorer-subtitle {
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+/* ── Layout principal ──────────────────────────────────────── */
+.explorer-shell {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+/* ── Contrôles ─────────────────────────────────────────────── */
+.explorer-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.explorer-input-wrap {
+  flex: 1;
+  min-width: 200px;
+}
+
+.explorer-input-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.explorer-prefix {
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-right: 6px;
+}
+
+.explorer-input-row {
+  display: flex;
+  align-items: center;
+}
+
+.explorer-input {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sk);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.explorer-input:focus { border-color: var(--accent); }
+
+/* ── Liste de fonctions ────────────────────────────────────── */
+#fn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.fn-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fn-color-dot {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  transition: transform 0.1s;
+}
+
+.fn-color-dot:hover { transform: scale(1.15); }
+
+.fn-label {
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.fn-input {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-sk);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.fn-input:focus { border-color: var(--accent); }
+
+.fn-delete {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink-muted);
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+  transition: background 0.12s, color 0.12s;
+}
+
+.fn-delete:hover { background: var(--wrong); color: #fff; border-color: var(--wrong); }
+
+.fn-add-btn {
+  font-size: 0.82rem;
+  padding: 6px 14px;
+}
+
+/* ── Boutons zoom ──────────────────────────────────────────── */
+.zoom-btns {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Canvas wrapper ────────────────────────────────────────── */
+.canvas-wrap {
+  position: relative;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sk);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+#graph-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Erreur ────────────────────────────────────────────────── */
+.explorer-error {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--wrong);
+  min-height: 1.4rem;
+  margin-top: 10px;
+  transition: opacity 0.2s;
+}
+
+/* ── Exemples ──────────────────────────────────────────────── */
+.explorer-examples {
+  margin-top: 20px;
+}
+
+.examples-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.examples-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.example-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  box-shadow: 1.5px 1.5px 0 var(--ink);
+}
+
+.example-chip:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+/* ── Info coordonnées ──────────────────────────────────────── */
+.canvas-coords {
+  position: absolute;
+  bottom: 8px; right: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  pointer-events: none;
+}

@@ -1,0 +1,221 @@
+/* ============================================================
+   MATHQUIZ — Design System (port fidèle de Bombatique)
+   Fonts : Caveat (titres) · Kalam (corps) · JetBrains Mono
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --ink:         #1a1a1a;
+  --ink-soft:    #4a4a4a;
+  --ink-muted:   #888888;
+  --paper:       #fafaf7;
+  --paper-2:     #f2f0e8;
+  --accent:      #E53935;
+  --accent-soft: #ffe8e7;
+  --correct:     #0a8a0a;
+  --wrong:       #cc3333;
+  --shadow-sk:   3px 3px 0 var(--ink);
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-pill: 999px;
+}
+
+/* ── Dark mode ─────────────────────────────────────────────── */
+html.dark {
+  --ink:         #f0ede6;
+  --ink-soft:    #b0aa9e;
+  --ink-muted:   #6e6860;
+  --paper:       #1a1a18;
+  --paper-2:     #242420;
+  --accent:      #E53935;
+  --accent-soft: #3a1515;
+  --shadow-sk:   3px 3px 0 rgba(240,237,230,0.25);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Body ──────────────────────────────────────────────────── */
+body {
+  font-family: 'Kalam', cursive;
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 27px,
+    rgba(0,0,0,0.03) 27px, rgba(0,0,0,0.03) 28px
+  );
+  color: var(--ink);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+html.dark body {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 27px,
+    rgba(255,255,255,0.025) 27px, rgba(255,255,255,0.025) 28px
+  );
+}
+
+/* ── Nav ───────────────────────────────────────────────────── */
+.sk-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sk-nav-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.sk-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.sk-nav-links a {
+  font-family: 'Kalam', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  transition: background 0.15s, color 0.15s;
+}
+
+.sk-nav-links a:hover,
+.sk-nav-links a.active {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+/* ── Theme toggle ──────────────────────────────────────────── */
+.sk-theme-btn {
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: transform 80ms, box-shadow 80ms, background 0.2s;
+  flex-shrink: 0;
+}
+
+.sk-theme-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.sk-btn {
+  font-family: 'Kalam', cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 11px 20px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: var(--shadow-sk);
+  transition: transform 80ms, box-shadow 80ms;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.sk-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.sk-btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.sk-btn-primary:hover { background: var(--ink-soft); }
+
+.sk-btn-accent {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.sk-btn-accent:hover { background: #c62828; }
+
+.sk-btn-ghost {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.sk-btn-ghost:hover { background: var(--paper-2); }
+
+/* ── Card ──────────────────────────────────────────────────── */
+.sk-card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sk);
+  padding: 20px;
+}
+
+/* ── Badge mono tag ────────────────────────────────────────── */
+.sk-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px dashed var(--ink-muted);
+  border-radius: var(--radius-pill);
+  padding: 2px 10px;
+  display: inline-block;
+}
+
+/* ── Shell centré ──────────────────────────────────────────── */
+.sk-shell {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+/* ── KaTeX override ────────────────────────────────────────── */
+.katex { font-size: 1.1em; }
+.katex-display { overflow-x: auto; padding: 4px 0; }
+
+/* ── Animations globales ───────────────────────────────────── */
+@keyframes sk-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sk-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}

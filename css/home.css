@@ -1,0 +1,124 @@
+/* ── Hero ──────────────────────────────────────────────────── */
+.home-hero {
+  text-align: center;
+  padding: 64px 24px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero-title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 16px;
+  animation: sk-fade-up 0.5s ease both;
+}
+
+.home-hero-subtitle {
+  font-family: 'Kalam', cursive;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin-bottom: 36px;
+  animation: sk-fade-up 0.5s 0.1s ease both;
+}
+
+.home-hero-cta {
+  animation: sk-fade-up 0.5s 0.2s ease both;
+  font-size: 1.15rem;
+  padding: 14px 32px;
+}
+
+/* ── Particules flottantes ─────────────────────────────────── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  color: var(--ink-muted);
+  opacity: 0.18;
+  animation: float linear infinite;
+  user-select: none;
+}
+
+@keyframes float {
+  0%   { transform: translateY(110%) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.18; }
+  90%  { opacity: 0.18; }
+  100% { transform: translateY(-110%) rotate(20deg); opacity: 0; }
+}
+
+/* ── Cards de navigation ───────────────────────────────────── */
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px 22px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sk);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 80ms, box-shadow 80ms, background 0.15s;
+  animation: sk-fade-up 0.45s ease both;
+}
+
+.home-card:hover {
+  background: var(--paper-2);
+}
+
+.home-card:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.home-card-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.home-card-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.home-card-desc {
+  font-family: 'Kalam', cursive;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.home-card:nth-child(1) { animation-delay: 0.25s; }
+.home-card:nth-child(2) { animation-delay: 0.35s; }
+.home-card:nth-child(3) { animation-delay: 0.45s; }
+
+/* ── Section titre ─────────────────────────────────────────── */
+.home-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-bottom: 24px;
+}

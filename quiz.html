@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz — MathQuiz 💣</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+
+  <nav class="sk-nav" aria-label="Navigation principale">
+    <a href="index.html" class="sk-nav-logo">MathQuiz 💣</a>
+    <ul class="sk-nav-links">
+      <li><a href="quiz.html" class="active">Quiz</a></li>
+      <li><a href="explorer.html">Grapheur</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+      <li><a href="calculatrice.html">Calculatrice</a></li>
+      <li><a href="devinette.html">Devinette</a></li>
+    </ul>
+    <button class="sk-theme-btn" id="theme-toggle" aria-label="Basculer le thème">🌙</button>
+  </nav>
+
+  <main class="sk-shell">
+
+    <!-- ── État 1 : Configuration ───────────────────────────── -->
+    <section class="quiz-state active" id="state-config" aria-label="Configuration du quiz">
+      <h1 class="config-title">💣 Quiz</h1>
+      <p class="config-subtitle">Choisis ta difficulté et ta catégorie</p>
+
+      <div class="config-section">
+        <span class="config-label">Difficulté</span>
+        <div class="config-options" id="diff-options" role="group" aria-label="Difficulté">
+          <button class="sk-btn sk-btn-ghost selected" data-diff="easy">😊 Facile</button>
+          <button class="sk-btn sk-btn-ghost" data-diff="medium">😤 Moyen</button>
+          <button class="sk-btn sk-btn-ghost" data-diff="hard">💀 Difficile</button>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <span class="config-label">Nombre de questions</span>
+        <div class="config-options" id="count-options" role="group" aria-label="Nombre de questions">
+          <button class="sk-btn sk-btn-ghost" data-count="3">3</button>
+          <button class="sk-btn sk-btn-ghost" data-count="5">5</button>
+          <button class="sk-btn sk-btn-ghost selected" data-count="10">10</button>
+          <button class="sk-btn sk-btn-ghost" data-count="20">20</button>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <span class="config-label">Catégorie</span>
+        <div class="config-options" id="cat-options" role="group" aria-label="Catégorie">
+          <button class="sk-btn sk-btn-ghost selected" data-cat="all">Tout</button>
+          <button class="sk-btn sk-btn-ghost" data-cat="algebra">Algèbre</button>
+          <button class="sk-btn sk-btn-ghost" data-cat="analysis">Analyse</button>
+          <button class="sk-btn sk-btn-ghost" data-cat="trigo">Trigo &amp; Log</button>
+          <button class="sk-btn sk-btn-ghost" data-cat="combinatorics">Combinatoire</button>
+        </div>
+      </div>
+
+      <button class="sk-btn sk-btn-accent config-start" id="start-btn">
+        Démarrer 🎯
+      </button>
+    </section>
+
+    <!-- ── État 2 : Question ─────────────────────────────────── -->
+    <section class="quiz-state" id="state-playing" aria-label="Question en cours">
+
+      <div class="quiz-header">
+        <span class="quiz-progress-label" id="progress-label">Q. 1 / 10</span>
+        <div class="quiz-lives" id="lives-display" aria-label="Vies restantes">
+          <span class="quiz-life" aria-hidden="true">♥</span>
+          <span class="quiz-life" aria-hidden="true">♥</span>
+          <span class="quiz-life" aria-hidden="true">♥</span>
+        </div>
+      </div>
+
+      <!-- Bombe timer -->
+      <div class="bomb-wrap" aria-hidden="true">
+        <div class="bomb-container" id="bomb-container">
+          <div class="bomb-body"></div>
+          <div class="bomb-eye"></div>
+          <div class="bomb-fuse"></div>
+          <span class="bomb-sparkle" id="bomb-sparkle">✦</span>
+
+          <!-- Explosion -->
+          <div class="bomb-explosion" id="bomb-explosion">
+            <div class="bomb-flash"></div>
+            <div class="bomb-shockwave"></div>
+            <span class="bomb-emoji-pop">💥</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question card -->
+      <div class="question-card" id="question-card">
+        <span class="sk-tag" id="question-topic"></span>
+        <div class="question-text" id="question-text"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="quiz-feedback" id="quiz-feedback" aria-live="polite"></div>
+
+      <!-- Zone de réponse QCM -->
+      <div id="answer-qcm" class="qcm-grid" role="group" aria-label="Choix de réponse"></div>
+
+      <!-- Zone de réponse numérique -->
+      <div id="answer-numeric" class="numeric-area" style="display:none;">
+        <div class="numeric-input-wrap">
+          <input
+            type="text"
+            class="numeric-input"
+            id="numeric-input"
+            placeholder="Réponse…"
+            inputmode="decimal"
+            autocomplete="off"
+            aria-label="Réponse numérique"
+          >
+          <button class="sk-btn sk-btn-accent numeric-submit" id="numeric-submit" type="button" aria-label="Valider">✓</button>
+        </div>
+        <div class="keypad" id="keypad" aria-label="Pavé numérique"></div>
+      </div>
+
+    </section>
+
+    <!-- ── État 3 : Résultats ─────────────────────────────────── -->
+    <section class="quiz-state" id="state-results" aria-label="Résultats">
+      <div class="results-wrap">
+        <p class="results-score" id="results-score">0/10</p>
+        <p class="results-score-label" id="results-label">Résultats</p>
+
+        <div class="results-canvas-wrap">
+          <canvas id="results-chart" width="180" height="180" aria-label="Camembert des résultats"></canvas>
+        </div>
+
+        <div class="results-stats">
+          <div class="results-stat">
+            <div class="results-stat-val" id="stat-streak">0</div>
+            <div class="results-stat-label">Meilleur streak</div>
+          </div>
+          <div class="results-stat">
+            <div class="results-stat-val" id="stat-time">0s</div>
+            <div class="results-stat-label">Temps moyen / Q</div>
+          </div>
+        </div>
+
+        <div class="results-actions">
+          <button class="sk-btn sk-btn-ghost" id="replay-btn">🔄 Rejouer</button>
+          <a href="index.html" class="sk-btn sk-btn-primary">← Accueil</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Popup anecdote (overlay global) ──────────────────────── -->
+  <div class="anecdote-overlay" id="anecdote-overlay" role="dialog" aria-modal="true" aria-label="Le savais-tu ?">
+    <div class="anecdote-modal">
+      <p class="anecdote-tag">💡 Le savais-tu ?</p>
+      <p class="anecdote-text" id="anecdote-text"></p>
+      <button class="sk-btn sk-btn-primary anecdote-continue-btn" id="anecdote-continue" type="button">
+        Continuer →
+      </button>
+    </div>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
